@@ -1,1 +1,50 @@
 
+name: Create Release on PR Merge 
+
+  
+
+on: 
+
+  pull_request: 
+
+    types: [closed] 
+
+  
+
+jobs: 
+
+  create_release: 
+
+    runs-on: ubuntu-latest 
+
+    if: github.event.pull_request.merged == true 
+
+    steps: 
+
+      - name: Checkout code 
+
+        uses: actions/checkout@v2 
+
+      - name: Create Release 
+
+        uses: actions/create-release@v1.0.0 
+
+        env: 
+
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+
+        with: 
+
+          tag_name: ${{ github.ref }} 
+
+          release_name: Release ${{ github.ref }} 
+
+          body: | 
+
+            This is an automated release created by a Github Actions workflow. 
+
+            The changes included in this release are available in the merged pull request. 
+
+          draft: false 
+
+          prerelease: false 
