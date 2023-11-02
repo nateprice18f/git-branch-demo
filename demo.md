@@ -14,5 +14,5 @@
 ```git merge feature-2``` # Merge feature-2 into the release branch   
 
 # Optionally, you can delete the merged feature branches 
-```git branch -d feature-1 ```
+```git branch -d feature-1 ```   
 ```git branch -d feature-2```
